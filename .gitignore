@@ -2,3 +2,4 @@
 __pycache__/
 test_voice_to_gemini.py
 test_voice.py
+list_models.py
