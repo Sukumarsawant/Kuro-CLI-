@@ -1,4 +1,4 @@
 .env 
 __pycache__/
 test_voice_to_gemini.py
-test_voice_to_gemini.py
+test_voice.py
