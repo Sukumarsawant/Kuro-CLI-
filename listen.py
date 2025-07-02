@@ -13,10 +13,10 @@ def get_voice_input():
         print(f"You said: {text}")
         return text
     except sr.UnknownValueError:
-        print("❌ Could not understand the audio.")
+        print(" Could not understand the audio.")
         return None
     except sr.RequestError:
-        print("🚫 Network error or API problem.")
+        print("Network error or API problem.")
         return None
     
 
