@@ -7,20 +7,30 @@ from speak import speak
 import subprocess
 from execute import execute_command,strip_clear
 
-spoken_text = get_voice_input()
+def main():
+    print("Kuro is Listening...")
 
-if spoken_text :
-    command = get_command_from_gemini(spoken_text)
-    # print(f"Gemini interprete : {command}")
-    cmd = strip_clear(command)
-    execute_command(cmd)
-    print(cmd)
-    # speak(cmd)
+    while True:
+        spoken_text = get_voice_input()
 
-else:
-    print("No speech detected please check your microphone")
+        if spoken_text:
+            # Exit condition
+            if spoken_text.strip().lower() in ["exit", "quit", "stop", "close"]:
+                print("Exiting on command.")
+                speak("Goodbye.")
+                break
 
+            command = get_command_from_gemini(spoken_text)
+            cmd = strip_clear(command)
+            execute_command(cmd)
+            print(cmd)
+            # speak(cmd)
 
+        else:
+            print("No speech detected, please check your microphone.")
+
+if __name__ == "__main__":
+    main()
 
 
     

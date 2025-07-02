@@ -18,7 +18,7 @@ User: {user_input}
 Shell:
 
 """
-    # print("📦 Gemini raw output:", command)
+    # print("Gemini raw output:", command)
 
     try:
         response = model.generate_content(prompt) #prompt + input 
