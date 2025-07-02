@@ -10,30 +10,13 @@ def get_command_from_gemini(user_input):
 
     # WIll be updated later to avoid jailbreak - sukumar
     prompt = f"""
-You are a terminal assistant. Your job is to return one of the following commands ONLY:
+You are a terminal assistant.
+Convert the following natural language instruction into a valid terminal command.
+ONLY return the command (no explanations, no repetition, no markdown).
 
-- add_file <filename>
-- delete_file <filename>
-- list_files
-
-⚠️ Always return in this format, no extra text.
-
-Examples:
-User: create a file named notes  
-Output: add_file notes.txt
-
-User: remove the file called log  
-Output: delete_file log.txt
-
-User: create a cpp file name code
-Output add_file code.cpp
-
-User: show my files  
-Output: list_files
-
-Now respond to this:
 User: {user_input}
-Output:
+Shell:
+
 """
     # print("📦 Gemini raw output:", command)
 
@@ -42,7 +25,7 @@ Output:
         command = response.text.strip().lower()
 
         if command :
-            return command
+            return command #will handle execution in main py
         # else:
         #     return "unknown"
     except Exception as e:
