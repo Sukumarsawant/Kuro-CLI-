@@ -12,6 +12,6 @@ for voice in voices:
         break
 
 def speak(text):
-    print(text)
+  
     engine.say(text)
     engine.runAndWait()
