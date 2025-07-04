@@ -5,5 +5,5 @@ test_voice.py
 list_models.py
 build/
 dist/
-ElevenLABS.py
+
 main.spec

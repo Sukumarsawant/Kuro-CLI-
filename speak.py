@@ -5,12 +5,11 @@ import os
 if "C:/PythonLibs" not in sys.path:
     sys.path.insert(0, "C:/PythonLibs")
 
-from dotenv import load_dotenv
+from config import ELEVENLABS_API_KEY  # using config instead of .env
 from elevenlabs.client import ElevenLabs
 from elevenlabs import play
 
-load_dotenv()
-client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
+client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
 voices = client.voices.search().voices
 female = next((v for v in voices if "female" in v.name.lower()), None)
