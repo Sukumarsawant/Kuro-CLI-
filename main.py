@@ -1,8 +1,9 @@
 import os
 import threading
 import tkinter as tk
-from tkinter import scrolledtext, ttk
+from tkinter import scrolledtext, ttk, simpledialog, messagebox
 import queue
+import json
 
 from listen import get_voice_input
 from gemini_ai import get_code_from_gemini
@@ -13,6 +14,34 @@ from write_code import handle_code_write
 q = queue.Queue()
 running = False
 voice_list = []
+
+# --- CONFIG LOGIC START ---
+CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
+def load_config():
+    if os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, 'r') as f:
+            try:
+                data = json.load(f)
+                if 'GEMINI_API_KEY' in data and data['GEMINI_API_KEY']:
+                    return data
+            except Exception:
+                pass
+    # Prompt for keys if missing or invalid
+    root = tk.Tk()
+    root.withdraw()  # Hide main window for prompt
+    while True:
+        gemini_key = simpledialog.askstring("Gemini API Key Required", "Enter your Gemini API Key:")
+        if gemini_key:
+            break
+        messagebox.showerror("Error", "Gemini API Key is required!")
+    eleven_key = simpledialog.askstring("Eleven Labs API Key (Optional)", "Enter your Eleven Labs API Key (leave blank for default voice):")
+    config = {"GEMINI_API_KEY": gemini_key, "ELEVENLABS_API_KEY": eleven_key or ""}
+    with open(CONFIG_FILE, 'w') as f:
+        json.dump(config, f)
+    root.destroy()
+    return config
+config = load_config()
+# --- CONFIG LOGIC END ---
 
 
 def main():
