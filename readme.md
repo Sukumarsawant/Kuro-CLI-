@@ -2,9 +2,9 @@
 
 <div align="center">
 
-  <img src="kuro.png" alt="Logo" width="80" height="80">
+  <img src="kuro.png" alt="Logo_here" width="80" height="80">
 
-  <h3 align="center">Kuro-CLI : Voice-Controlled Terminal Assistant</h3>
+  <h3 align="center">Kuro : Voice-Controlled Terminal Assistant</h3>
 
   <p align="center">
     <a href="https://github.com/Sukumarsawant/Kuro-CLI-"><strong>Explore the Code »</strong></a>
